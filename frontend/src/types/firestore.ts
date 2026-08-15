@@ -23,3 +23,15 @@ export interface UserProfile {
 }
 
 export type CreateUserProfileInput = Omit<UserProfile, 'createdAt' | 'updatedAt'>
+
+export interface Note {
+  id: string
+  uid: string // owner's user id — used by security rules
+  title: string
+  body: string
+  createdAt: Timestamp
+  updatedAt: Timestamp
+  _schemaVersion: 1
+}
+export type CreateNoteInput = Pick<Note, 'title' | 'body'>
+export type UpdateNoteInput = Partial<Pick<Note, 'title' | 'body'>>
